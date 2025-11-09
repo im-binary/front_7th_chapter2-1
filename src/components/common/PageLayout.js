@@ -1,15 +1,23 @@
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 
-export const PageLayout = ({ children }) => {
+export const PageLayout = ({
+  children = "",
+  header,
+  footer,
+  wrapperClass = "min-h-screen bg-gray-50",
+  mainClass = "max-w-md mx-auto px-4 py-4",
+} = {}) => {
+  const headerMarkup = header ?? Header();
+  const footerMarkup = footer ?? Footer();
+
   return /*html*/ `
-    <div class="min-h-screen bg-gray-50">
-      ${Header()}
-       <main class="max-w-md mx-auto px-4 py-4">
-        // TODO(이진): 필터 컴포넌트 추가해야 함
+    <div class="${wrapperClass}">
+      ${headerMarkup}
+      <main class="${mainClass}">
         ${children}
       </main>
-      ${Footer()}
+      ${footerMarkup}
     </div>
   `;
 };
