@@ -32,4 +32,4 @@
       </main>
       ${a()}
     </div>
-  `,s=()=>r(async()=>{let{worker:e}=await import(`./browser-CcyfQrG1.js`);return{worker:e}},[]).then(({worker:e})=>e.start({url:`/front_7th_chapter2-1/mockServiceWorker.js`,onUnhandledRequest:`bypass`}));function c(){document.body.innerHTML=o({children:`<h1>Hello World</h1>`})}s().then(c);
+  `,s=()=>r(async()=>{let{worker:e}=await import(`./browser-CcyfQrG1.js`);return{worker:e}},[]).then(({worker:e})=>e.start({serviceWorker:{url:`/front_7th_chapter2-1/mockServiceWorker.js`},onUnhandledRequest:`bypass`}));function c(){document.body.innerHTML=o({children:`<h1>Hello World</h1>`})}s().then(c);
