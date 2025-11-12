@@ -1,4 +1,4 @@
-import{DEFAULT_LIMIT as e,DEFAULT_SORT as t,LIMIT_OPTIONS as n,SORT_OPTIONS as r,addToCart as i,escapeHtml as a,formatCurrency as o}from"./index-D_ZWa9sq.js";import{getCategories as s,getProducts as c,setCategory as l,setPage as u,setPageLimit as d,setSearchQuery as f,setSortOption as p}from"./filterActions-DAE5MY0m.js";const m=()=>`
+import{DEFAULT_LIMIT as e,DEFAULT_SORT as t,LIMIT_OPTIONS as n,SORT_OPTIONS as r,addToCart as i,escapeHtml as a,formatCurrency as o}from"./index-DG5hqHkL.js";import{getCategories as s,getProducts as c,setCategory as l,setPage as u,setPageLimit as d,setSearchQuery as f,setSortOption as p}from"./filterActions-DAE5MY0m.js";const m=()=>`
   <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden animate-pulse">
     <div class="aspect-square bg-gray-200"></div>
     <div class="p-3 space-y-2">
