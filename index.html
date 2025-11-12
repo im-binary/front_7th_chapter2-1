@@ -6,6 +6,15 @@
   <title>상품 쇼핑몰</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
+    // GitHub Pages SPA 라우팅 복원
+    (function() {
+      const redirectPath = sessionStorage.getItem('redirectPath');
+      if (redirectPath) {
+        sessionStorage.removeItem('redirectPath');
+        history.replaceState(null, '', redirectPath);
+      }
+    })();
+    
     tailwind.config = {
       theme: {
         extend: {
@@ -17,7 +26,7 @@
       }
     };
   </script>
-  <script type="module" crossorigin src="/front_7th_chapter2-1/assets/index-Btx0gTnP.js"></script>
+  <script type="module" crossorigin src="/front_7th_chapter2-1/assets/index-DG5hqHkL.js"></script>
   <link rel="stylesheet" crossorigin href="/front_7th_chapter2-1/assets/index-DVL8oARQ.css">
 </head>
 <body class="bg-gray-50">
