@@ -1,5 +1,5 @@
-import { formatCurrency } from "../../utils/format.js";
-import { DEFAULT_LIMIT, DEFAULT_SORT } from "../../shared/config/catalog.js";
+import { formatCurrency } from "../../lib/utils/format.js";
+import { DEFAULT_LIMIT, DEFAULT_SORT } from "../../lib/config/catalog.js";
 import { renderFilterPanel } from "./FilterPanel.js";
 import { renderProductsGrid } from "./ProductGrid.js";
 import { renderLoadMoreSection } from "./LoadMoreSection.js";

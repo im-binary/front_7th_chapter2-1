@@ -1,5 +1,5 @@
-import { renderSkeletonCards } from "../../shared/ui/skeleton.js";
-import { renderSpinner } from "../../shared/ui/spinner.js";
+import { renderSkeletonCards } from "../ui/skeleton.js";
+import { renderSpinner } from "../ui/spinner.js";
 
 export const renderLoadMoreSection = ({ hasMore, isLoadingMore, loadMoreError }) => {
   if (loadMoreError) {

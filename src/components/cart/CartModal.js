@@ -1,4 +1,4 @@
-import { escapeHtml, formatCurrency } from "../../utils/format.js";
+import { escapeHtml, formatCurrency } from "../../lib/utils/format.js";
 
 export const renderCartModal = ({
   items = [],

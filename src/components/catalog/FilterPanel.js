@@ -1,5 +1,5 @@
-import { escapeHtml } from "../../utils/format.js";
-import { DEFAULT_LIMIT, DEFAULT_SORT, LIMIT_OPTIONS, SORT_OPTIONS } from "../../shared/config/catalog.js";
+import { escapeHtml } from "../../lib/utils/format.js";
+import { DEFAULT_LIMIT, DEFAULT_SORT, LIMIT_OPTIONS, SORT_OPTIONS } from "../../lib/config/catalog.js";
 
 const categoryButtonBaseClasses = "text-left px-3 py-2 text-sm rounded-md border transition-colors";
 const categoryButtonDefaultClasses = "bg-white border-gray-300 text-gray-700 hover:bg-gray-50";
