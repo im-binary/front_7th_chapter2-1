@@ -3,6 +3,7 @@ import { Store } from "./Store.js";
 import { initialState } from "../store/initialState.js";
 import { PageLayout, showToast as showToastMessage } from "../components/index.js";
 import * as CartModule from "../lib/cartController.js";
+import { updateURL, filtersToQueryParams, queryParamsToFilters, getCurrentQueryParams } from "../lib/utils/url.js";
 
 const CART_METHOD_NAMES = [
   "loadCartFromStorage",
@@ -114,7 +115,50 @@ export class App {
     }
     this.ensureSelectedIdsSet();
     this.normalizeCartSelections();
+
+    // URL 쿼리 파라미터를 filters 상태로 복원
+    this.restoreFiltersFromURL();
+
+    // filters 상태 변경 시 URL 자동 업데이트
+    this.setupURLSync();
+
     this.initRouter();
+  }
+
+  /**
+   * URL 쿼리 파라미터로부터 filters 상태 복원
+   */
+  restoreFiltersFromURL() {
+    const currentPath = window.location.pathname;
+
+    // 메인 페이지(카탈로그)에서만 URL 파라미터 복원
+    if (currentPath === "/" || currentPath === "/index.html") {
+      const queryParams = getCurrentQueryParams();
+
+      // URL에 쿼리 파라미터가 있는 경우만 복원
+      if (Object.keys(queryParams).length > 0) {
+        const filters = queryParamsToFilters(queryParams);
+        this.store.updateSlice("filters", filters);
+      }
+    }
+  }
+
+  /**
+   * filters 상태 변경 시 URL 자동 업데이트 설정
+   */
+  setupURLSync() {
+    this.store.subscribe((state, prevState) => {
+      // filters 변경 감지
+      if (JSON.stringify(state.filters) !== JSON.stringify(prevState.filters)) {
+        const currentPath = window.location.pathname;
+
+        // 메인 페이지(카탈로그)에서만 URL 업데이트
+        if (currentPath === "/" || currentPath === "/index.html") {
+          const queryParams = filtersToQueryParams(state.filters);
+          updateURL("/", queryParams);
+        }
+      }
+    });
   }
 
   bindCartModule() {
@@ -132,6 +176,9 @@ export class App {
       },
       "/": () => {
         this.showProductList();
+      },
+      "*": () => {
+        this.showNotFoundPage();
       },
     });
   }
@@ -166,6 +213,15 @@ export class App {
     const { ProductDetailPage } = await import("../pages/product/ProductDetailPage.js");
     this.detailPage = new ProductDetailPage(this);
     await this.detailPage.load(productId);
+  }
+
+  async showNotFoundPage() {
+    this.currentPage = "notFound";
+    this.resetObserver();
+
+    const { NotFoundPage } = await import("../pages/NotFoundPage.js");
+    const notFoundPage = new NotFoundPage(this);
+    notFoundPage.render();
   }
 
   render(content) {
